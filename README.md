@@ -3,6 +3,7 @@ Hello! This project is called SEEN.
 It is a simple but effective tracker for your favorite movies and/or TV shows.
 
 My parents are constantly watching movies and TV shows on a plethora of different streaming services and apps. 
+They are regularly switching between different streaming services, seasons of series', and movies. They watch so many they cannot keep track of them all. 
 They often talk about wishing they had a log of everything they watched.
 The goal of this project is to give them exactly that, with some additional features to improve QOL. 
 
