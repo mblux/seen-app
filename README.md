@@ -1,3 +1,16 @@
+Hello! This project is called SEEN. 
+
+It is a simple but effective tracker for your favorite movies and/or TV shows.
+
+My parents are constantly watching movies and TV shows on a plethora of different streaming services and apps. 
+They often talk about wishing they had a log of everything they watched.
+The goal of this project is to give them exactly that, with some additional features to improve QOL. 
+
+Enjoy!
+Matt 
+--------------------------------------------------------------------------------------------------------------------
+# Below this line is boilerplate from create-react-app. It was left intentionally as a quick reference.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
