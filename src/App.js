@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import InputBoxes from "./components/InputBoxes"
+import Navbar from "./components/Navbar"
+import MediaList from "./components/MediaList"
+import React from "react"
+import {useEffect, useState} from "react"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const [watchedList, setWatchedList] = useState([]);
+
+function createWatchedList() {
+for(let i = 0; i < watchedList.length; i++) {
+  setWatchedList(oldList => oldList.map(listItem => (<p>{listItem}</p>)))
+}
 }
 
-export default App;
+console.log(watchedList)
+  return (
+    <main className="main--wrapper">
+      <Navbar/>
+      <MediaList/>
+      <InputBoxes createWatchedList={createWatchedList}/>  
+    </main>
+  )
+}
+
+export default App
