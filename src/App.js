@@ -22,6 +22,7 @@ function handleChange(event) {
 function handleSubmit(event) {
 event.preventDefault()
 setWatchedList(oldList => [...oldList, mediaName])
+setMediaName("")
 }
 
 const listElements = (watchedList.length > 0) && watchedList.map(watchedItem => (<li>{watchedItem}</li>))
