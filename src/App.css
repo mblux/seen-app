@@ -24,26 +24,44 @@
   justify-content: center;;
 }
 
-.medialist--wrapper{
-  display: flex;  
-  justify-content: left;
+.medialist--container{
+  display: grid;
+  background-color: orange;
   grid-column: 1;
+  grid-template-columns: auto 30% auto;
+  /* justify-content: center;
   align-self: top;
   justify-self: center;
-  padding-top: 10px;
+  align-items: top;
+  
+  
+  padding-top: 5px;
+  max-width: 205px; 
+  min-width: 205px; 
+ */
 }
-
 
 .medialist--header {
   font-size: 1rem;
   grid-column: 1;
   display: flex;
+  /*background-color: teal;*/
+  height: 15%;
+  min-height: 10%;
+  max-height: 20%;
+  grid-column: 2  
 }
 
-
-.input--form--wrapper{
+.input--form--container{
   display: flex;
   text-align: center;
   justify-content: center;
   justify-items: center;
+}
+
+.medialist--list{
+  display: flex;
+  padding-top: 30px;
+  flex-direction: column;
+  grid-column: 2;
 }
