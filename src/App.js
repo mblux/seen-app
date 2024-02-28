@@ -11,19 +11,23 @@ const[mediaName, setMediaName] = useState("")
 const [watchedList, setWatchedList] = useState([])
 
 
-
 function handleChange(event) {
   const {value, name} = event.target 
   setMediaName(value)
   console.log(watchedList)
 }
 
-
 function handleSubmit(event) {
 event.preventDefault()
 setWatchedList(oldList => [...oldList, mediaName])
 setMediaName("")
 }
+
+function resetWatchedList() {
+setWatchedList([])
+}
+
+
 
 const listElements = (watchedList.length > 0) && watchedList.map(watchedItem => (<li>{watchedItem}</li>))
 
@@ -32,12 +36,16 @@ const listElements = (watchedList.length > 0) && watchedList.map(watchedItem => 
   return (
     <main className="main--wrapper">
       <Navbar/>
-      <MediaList listElements={listElements}/>
+      <MediaList  
+      resetWatchedList={resetWatchedList}
+      listElements={listElements}/>
       <div className="input--form--container">
+        
       <form className="title-form" onSubmit={handleSubmit}>
-        <input
+    
+        <input 
         type="text"
-        placeholder="Title"
+        placeholder="Enter Title"
         className="title--form--input"
         name="title"
         onChange={handleChange}
@@ -45,9 +53,11 @@ const listElements = (watchedList.length > 0) && watchedList.map(watchedItem => 
        
         
         />
-        <button className="submit--btn">Submit</button>
+        <button className="submit--btn">Add Movie</button>
       </form>
+      
     </div> 
+    
     </main>
   )
 }
