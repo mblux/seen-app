@@ -2,7 +2,10 @@ import './App.css';
 import Navbar from "./components/Navbar"
 import MediaList from "./components/MediaList"
 import React from "react"
+import SearchBar from "./components/SearchBar"
 import {useEffect, useState} from "react"
+
+console.log(process.env.REACT_APP_OMDB_API_KEY)
 
 function App() {
 
@@ -10,12 +13,15 @@ const[mediaName, setMediaName] = useState("")
 
 const [watchedList, setWatchedList] = useState([])
 
+useEffect(()=> console.log(watchedList) , [watchedList])
 
 function handleChange(event) {
   const {value, name} = event.target 
   setMediaName(value)
   console.log(watchedList)
 }
+
+
 
 function handleSubmit(event) {
 event.preventDefault()
@@ -35,6 +41,9 @@ const listElements = (watchedList.length > 0) && watchedList.map(watchedItem => 
 
   return (
     <main className="main--wrapper">
+      <div className="search-bar-container">
+        <SearchBar/>
+      </div>
       <Navbar/>
       <MediaList  
       resetWatchedList={resetWatchedList}
@@ -55,6 +64,7 @@ const listElements = (watchedList.length > 0) && watchedList.map(watchedItem => 
         />
         <button className="submit--btn">Add Movie</button>
       </form>
+      
       
     </div> 
     

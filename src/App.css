@@ -1,3 +1,19 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.search-bar-container{
+  padding-top: 20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px; 
+}
+
 .main--wrapper{
   display: grid;  
   justify-content: center;
@@ -13,6 +29,8 @@
 .main--nav{
   background-color:darkgrey;
   grid-column: 3;
+  min-height: 100%;
+  margin-bottom: 20px;
 }
 
 .main--header {
@@ -31,10 +49,12 @@
 
 .medialist--container{
   display: grid;
-  background-color: orange;
+  background-color: #eee;
   grid-column: 3;
   grid-row: 2;
   grid-template-columns: auto 30% auto;
+  min-height: 400px;
+  margin-top: 30px;
  
   /* justify-content: center;
   align-self: top;
