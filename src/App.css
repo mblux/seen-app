@@ -6,12 +6,15 @@
 
 .search-bar-container{
   padding-top: 20vh;
-  width: 40%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 200px; 
+  grid-column: 3;
+  grid-row: 2;
+  z-index: 0;
 }
 
 .main--wrapper{
@@ -58,7 +61,7 @@
 .medialist--container{
   display: grid;
   background-color: #a9a9a9;
-  grid-column: 3;
+  grid-column: 1;
   grid-row: 2;
   grid-template-columns: auto 30% auto;
   min-height: 400px;
@@ -97,8 +100,8 @@
   justify-self: center;
   margin-top: 50px;
   background-color: white;
-  grid-column: 3;
-  grid-row: 2;
+  grid-column: 1;
+  grid-row: 1;
   width: 200px;
   height: 60px;
   overflow: hidden;

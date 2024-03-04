@@ -7,9 +7,9 @@ const SearchResultsList = ({ searchResults }) => {
     <div className="results-list">
       {searchResults.map((result) => {
         return (
-          <div key={result.imdbID}>
+          <div className="movie-link-wrapper" key={result.imdbID}>
             <a href={`https://www.imdb.com/title/${result.imdbID}`}>
-              {result.Title} ({result.Year}){" "}
+              <span className="movie-link-text">{result.Title} ({result.Year}){" "}</span>
               <img
                 className="movie-thumbnail"
                 src={result.Poster}               
