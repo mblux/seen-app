@@ -19,7 +19,12 @@ export default function SearchBar({ setSearchResults }) {
         if (input.length > 2) {
           const objArr = json.Search
           const results = objArr.filter((movie) => {
-            return movie.Title.toLowerCase().includes(input.toLowerCase())
+            return (
+              movie.Title.toLowerCase().includes(input.toLowerCase()) &&
+              movie.Year &&
+              movie.imdbID &&
+              movie.Type
+            )
           })
           setSearchResults(results)
         }
