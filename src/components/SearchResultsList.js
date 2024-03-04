@@ -11,10 +11,9 @@ const SearchResultsList = ({ searchResults }) => {
             <a href={`https://www.imdb.com/title/${result.imdbID}`}>
               {result.Title} ({result.Year}){" "}
               <img
-                className="result-thumbnail"
-                src={result.Poster}
-                style={{ width: 300, height: 300 }}
-                resizeMode="contain"
+                className="movie-thumbnail"
+                src={result.Poster}               
+                // resizeMode="contain"
                 alt="new"
               />
             </a>

@@ -9,3 +9,8 @@
     max-height: 300px;
     overflow-y: scroll;
 }
+
+.movie-thumbnail{
+    height:120px;
+    width: 90px;
+}
