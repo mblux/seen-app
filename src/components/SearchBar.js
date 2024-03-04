@@ -12,6 +12,7 @@ export default function SearchBar({ setSearchResults }) {
 
   console.log(omdbWebsite)
 
+
   const fetchData = (value) => {
     fetch(omdbWebsite + value)
       .then((response) => response.json())
@@ -23,7 +24,8 @@ export default function SearchBar({ setSearchResults }) {
               movie.Title.toLowerCase().includes(input.toLowerCase()) &&
               movie.Year &&
               movie.imdbID &&
-              movie.Type
+              movie.Type &&
+              movie.Poster
             )
           })
           setSearchResults(results)
