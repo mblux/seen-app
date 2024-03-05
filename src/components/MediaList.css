@@ -1,0 +1,25 @@
+/* .medialist--list{
+    display: flex;
+    padding-top: 30px;
+    flex-direction: column;
+    grid-column: 2;
+  }
+  
+  .medialist--clear--button{
+    height: 20px;
+    width: 80px; 
+    grid-column: 2;
+  }
+  
+  .medialist--header {
+    font-size: 1rem;
+    grid-column: 2;
+    display: flex;
+    background-color: teal;
+    height: 15%;
+    min-height: 10%;
+    max-height: 20%;
+    text-align: center;
+    justify-self: center;
+   
+  } */

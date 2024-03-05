@@ -8,14 +8,15 @@ const SearchResultsList = ({ searchResults }) => {
       {searchResults.map((result) => {
         return (
           <div className="movie-link-wrapper" key={result.imdbID}>
-            <a href={`https://www.imdb.com/title/${result.imdbID}`}>
-              <span className="movie-link-text">{result.Title} ({result.Year}){" "}</span>
+            <a className="movie-thumb-and-link" href={`https://www.imdb.com/title/${result.imdbID}`}>
+              
               <img
                 className="movie-thumbnail"
                 src={result.Poster}               
                 // resizeMode="contain"
                 alt="new"
               />
+              <span className="movie-link-text">{result.Title} ({result.Year}){" "}</span>
             </a>
           </div>
         );

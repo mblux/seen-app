@@ -1,4 +1,5 @@
 import React from "react";
+import './MediaList.css'
 
 export default function MediaList(props) {
     return(

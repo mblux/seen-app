@@ -1,4 +1,5 @@
 import React from "react";
+import "./Navbar.css"
 
 export default function Navbar() {
     return(
@@ -6,7 +7,7 @@ export default function Navbar() {
         <header className="main--header">
         <h1>seen</h1> 
      
-        <p className="main--smallText">THE app to log and rate your favorite movies and shows</p>
+        <p className="main--smallText">The #1 app to log and rate your favorite movies and shows</p>
       </header>
       </nav>
     )
