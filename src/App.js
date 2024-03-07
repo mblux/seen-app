@@ -44,17 +44,6 @@ function App() {
     return unsubscribe;
   }, []);
 
-  // async function addToWatched() {
-  //   const newMovie = {
-  //     title: "",
-  //     body: "#Type your movie review here!",
-  //   };
-  //   const addMovieRef = await addDoc(moviesCollection, newMovie);
-  //   setMovieId(addMovieRef.id);
-  //   // setWatchedList((oldList) => [...oldList, movie])
-  //   // setMovie("")
-  // }
-
   function handleChange(event) {
     const { value } = event.target;
     setMovie(value);
@@ -65,26 +54,22 @@ function App() {
     setWatchedList([]);
   }
 
-  // const listElements =
-  //   watchedList.length > 0 &&
-  //   watchedList.map((watchedItem) => <li>{watchedItem}</li>);
+  const listElements =
+    watchedList.length > 0 &&
+    watchedList.map((watchedItem) => (
+      <li key={watchedItem.id}>{watchedItem.title}</li>
+    ));
 
   async function addNewMovie(event) {
-    event.preventDefault()
-  const newMovie = {
+    event.preventDefault();
+    const newMovie = {
       title: movie,
-      body: "#Type your review here!"
+      body: "#Type your review here!",
+    };
+    const newMovieRef = await addDoc(moviesCollection, newMovie);
+    setMovieId(newMovieRef.id);
+    setMovie("");
   }
-  const newMovieRef = await addDoc(moviesCollection, newMovie);
-  setMovieId(newMovieRef.id);
-}
-
-
-  // function handleSubmit(event) {
-  //   event.preventDefault()
-  //   setWatchedList((oldList) => [...oldList, movie])
-  //   setMovie("")
-  // }
 
   return (
     <main className="main--wrapper">
@@ -95,7 +80,7 @@ function App() {
       <Navbar />
       <MediaList
         resetWatchedList={resetWatchedList}
-        // listElements={listElements}
+        listElements={listElements}
       />
       <div className="input--form--container">
         <form onSubmit={addNewMovie} className="title-form">
@@ -105,14 +90,10 @@ function App() {
             className="title--form--input"
             name="title"
             id={movie}
-            // onSubmit={handleSubmit}
-            
             onChange={handleChange}
             value={movie}
           />
-          <button className="submit--btn">
-            Add Movie
-          </button>
+          <button className="submit--btn">Add Movie</button>
         </form>
       </div>
     </main>
