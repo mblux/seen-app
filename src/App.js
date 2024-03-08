@@ -5,8 +5,16 @@ import React from "react"
 import SearchBar from "./components/SearchBar"
 import { useEffect, useState } from "react"
 import SearchResultsList from "./components/SearchResultsList"
-import { onSnapshot, addDoc } from "firebase/firestore"
-import { moviesCollection } from "./firebase.js"
+import {
+  onSnapshot,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+  setDoc,
+} from "firebase/firestore"
+import { moviesCollection, db } from "./firebase.js"
+import { Stars } from "./components/Stars.js"
 
 //#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
 
@@ -25,7 +33,7 @@ import { moviesCollection } from "./firebase.js"
 function App() {
   const [movie, setMovie] = useState("")
   const [watchedList, setWatchedList] = useState([])
-  const [movieId, setMovieId] = useState(watchedList[0]?.id | "")
+  const [currentMovieId, setCurrentMovieId] = useState("")
   const [searchResults, setSearchResults] = useState([])
 
   //#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
@@ -50,14 +58,26 @@ function App() {
     console.log(watchedList)
   }
 
-  // function resetWatchedList() {
-  //   setWatchedList([])
-  // }
+  const handleRatingChange = (id, newRating) => {
+    setWatchedList(
+      watchedList.map((item) =>
+        item.id === id ? { ...item, rating: newRating } : item
+      )
+    )
+  }
 
   const listElements = watchedList.map((movie) => {
     return (
       <li key={movie.id} className="list-item">
-        {movie.title}
+        Title: {movie.title}
+        <br />
+        Rating:{" "}
+        <Stars
+          updateRating={updateRating}
+          id={movie.id}
+          initialValue={movie.rating}
+          onChange={(newRating) => handleRatingChange(movie.id, newRating)}
+        />
       </li>
     )
   })
@@ -66,13 +86,16 @@ function App() {
     event.preventDefault()
     const newMovie = {
       title: movie,
-      body: "#Type your review here!",
-      id: movieId,
-      rating: null,
+      rating: 0,
     }
     const newMovieRef = await addDoc(moviesCollection, newMovie)
-    setMovieId(newMovieRef.id)
+    setCurrentMovieId(newMovieRef.id)
     setMovie("")
+  }
+
+  function updateRating(currentMovieId, newRating) {
+    const docRef = doc(db, "movies", currentMovieId)
+    updateDoc(docRef, { rating: newRating })
   }
 
   return (
