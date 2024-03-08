@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react"
 import { moviesCollection, db } from "../firebase.js"
 import { updateDoc, docRef, doc } from "firebase/firestore"
 
-export const Stars = (props, { initialValue }) => {
+export const Stars = (props, { id, updateRating, initialValue }) => {
   const [rating, setRating] = useState(initialValue)
 
-  const handleRatingChange = (newRating) => {
+  const handleStarRating = async (newRating) => {
+    props.getMovieRating(props.id)
     setRating(newRating)
-    props.updateReviewStars(props.id, newRating)
+    await props.updateRating(props.id, newRating)
   }
 
   return (
@@ -15,7 +16,7 @@ export const Stars = (props, { initialValue }) => {
       {[...Array(5)].map((_, index) => (
         <span
           key={index}
-          onClick={() => handleRatingChange(index + 1)}
+          onClick={() => handleStarRating(index + 1)}
           style={{ cursor: "pointer", color: index < rating ? "gold" : "gray" }}
         >
           ★

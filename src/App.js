@@ -10,6 +10,7 @@ import {
   addDoc,
   updateDoc,
   doc,
+  getDoc,
   deleteDoc,
   setDoc,
 } from "firebase/firestore"
@@ -77,6 +78,7 @@ function App() {
           id={movie.id}
           initialValue={movie.rating}
           onChange={(newRating) => handleRatingChange(movie.id, newRating)}
+          getMovieRating={getMovieRating(movie.id)}
         />
       </li>
     )
@@ -96,6 +98,18 @@ function App() {
   function updateRating(currentMovieId, newRating) {
     const docRef = doc(db, "movies", currentMovieId)
     updateDoc(docRef, { rating: newRating })
+  }
+
+  //GET rating from each movie in watchedList array from firebase
+  async function getMovieRating(currentMovieId) {
+    const docRef = doc(db, "movies", currentMovieId)
+    const docSnap = await getDoc(docRef)
+    if (docSnap.exists()) {
+      const currentRating = docSnap.data().rating
+      console.log("Document data:", docSnap.data().rating)
+    } else {
+      console.log("No such document!")
+    }
   }
 
   return (
