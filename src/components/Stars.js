@@ -12,7 +12,6 @@ export const Stars = (props, { initialValue }) => {
         const docSnap = await getDoc(doc(db, "movies", props.id))
         if (docSnap.exists()) {
           const { rating } = docSnap.data()
-          console.log(rating)
           setRating(rating)
         }
       } catch (error) {
