@@ -56,7 +56,6 @@ function App() {
   function handleChange(event) {
     const { value } = event.target
     setMovie(value)
-    console.log(watchedList)
   }
 
   const handleRatingChange = (id, newRating) => {
