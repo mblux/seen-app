@@ -1,14 +1,30 @@
 import React, { useState, useEffect } from "react"
 import { moviesCollection, db } from "../firebase.js"
-import { updateDoc, docRef, doc } from "firebase/firestore"
+import { updateDoc, docRef, doc, getDoc } from "firebase/firestore"
 
-export const Stars = (props, { id, updateRating, initialValue }) => {
+export const Stars = (props, { initialValue }) => {
   const [rating, setRating] = useState(initialValue)
 
-  const handleStarRating = async (newRating) => {
-    props.getMovieRating(props.id)
+  useEffect(() => {
+    // Fetch the rating from Firestore document
+    const fetchRating = async () => {
+      try {
+        const docSnap = await getDoc(doc(db, "movies", props.id))
+        if (docSnap.exists()) {
+          const { rating } = docSnap.data()
+          console.log(rating)
+          setRating(rating)
+        }
+      } catch (error) {
+        console.error("Error fetching rating:", error)
+      }
+    }
+    fetchRating()
+  }, [props.id])
+
+  const handleRatingChange = (newRating) => {
     setRating(newRating)
-    await props.updateRating(props.id, newRating)
+    props.updateRating(props.id, newRating)
   }
 
   return (
@@ -16,7 +32,7 @@ export const Stars = (props, { id, updateRating, initialValue }) => {
       {[...Array(5)].map((_, index) => (
         <span
           key={index}
-          onClick={() => handleStarRating(index + 1)}
+          onClick={() => handleRatingChange(index + 1)}
           style={{ cursor: "pointer", color: index < rating ? "gold" : "gray" }}
         >
           ★
