@@ -16,30 +16,11 @@ import {
 } from "firebase/firestore"
 import { moviesCollection, db } from "./firebase.js"
 import { Stars } from "./components/Stars.js"
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
-//#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-
 function App() {
   const [movie, setMovie] = useState("")
   const [watchedList, setWatchedList] = useState([])
   const [currentMovieId, setCurrentMovieId] = useState("")
   const [searchResults, setSearchResults] = useState([])
-
-  //#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-  //#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
-  //#TODO: Add a button to add a movie FROM THE SEARCH BAR to the watched list!!!!
 
   useEffect(() => {
     const unsubscribe = onSnapshot(moviesCollection, function (snapshot) {
@@ -124,11 +105,18 @@ function App() {
         // resetWatchedList={resetWatchedList}
         listElements={listElements}
       />
+      {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
+      #TODO: USE THIS FORM TO ADD A CUSTOM MOVIE THAT COULDN'T BE SEARCHED 
+      TO WATCHED LIST 
+      
       <div className="input--form--container">
+        <p>
+          Can't find a movie in search? Enter and submit a custom title here
+        </p>
         <form onSubmit={addNewMovie} className="title-form">
           <input
             type="text"
-            placeholder="Enter Title"
+            placeholder="My Movies and Shows"
             className="title--form--input"
             name="title"
             id={movie}
@@ -137,7 +125,7 @@ function App() {
           />
           <button className="submit--btn">Add Movie</button>
         </form>
-      </div>
+      </div> */}
     </main>
   )
 }
