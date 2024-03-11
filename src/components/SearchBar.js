@@ -12,7 +12,6 @@ export default function SearchBar({ setSearchResults }) {
 
   console.log(omdbWebsite)
 
-
   const fetchData = (value) => {
     fetch(omdbWebsite + value)
       .then((response) => response.json())
@@ -44,7 +43,7 @@ export default function SearchBar({ setSearchResults }) {
       <FaSearch id="search-icon" />
       <input
         className="search-input-bar"
-        placeholder="Enter a movie or show title"
+        placeholder="Search for your favorite movie or show"
         value={input}
         onChange={(event) => handleChange(event.target.value)}
       ></input>

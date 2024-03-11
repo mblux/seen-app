@@ -32,7 +32,10 @@ export const Stars = (props, { initialValue }) => {
         <span
           key={index}
           onClick={() => handleRatingChange(index + 1)}
-          style={{ cursor: "pointer", color: index < rating ? "gold" : "gray" }}
+          style={{
+            cursor: "pointer",
+            color: index < rating ? "rgb(210, 244, 255)" : "gray",
+          }}
         >
           ★
         </span>

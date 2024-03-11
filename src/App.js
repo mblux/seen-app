@@ -69,7 +69,7 @@ function App() {
   const listElements = watchedList.map((movie) => {
     return (
       <li key={movie.id} className="list-item">
-        Title: {movie.title}
+        {movie.title}
         <br />
         Rating:{" "}
         <Stars
@@ -83,8 +83,7 @@ function App() {
     )
   })
 
-  async function addNewMovie(event) {
-    event.preventDefault()
+  async function addNewMovie(movie) {
     const newMovie = {
       title: movie,
       rating: 0,
@@ -115,7 +114,10 @@ function App() {
     <main className="main--wrapper">
       <div className="search-bar-container">
         <SearchBar setSearchResults={setSearchResults} />
-        <SearchResultsList searchResults={searchResults} />
+        <SearchResultsList
+          searchResults={searchResults}
+          addNewMovie={addNewMovie}
+        />
       </div>
       <Navbar />
       <MediaList
