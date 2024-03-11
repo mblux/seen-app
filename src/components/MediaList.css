@@ -1,10 +1,17 @@
-/* .medialist--list{
-    display: flex;
-    padding-top: 30px;
-    flex-direction: column;
-    grid-column: 2;
-  }
-  
+.medialist--list {
+  display: flex;
+  padding-top: 30px;
+  flex-direction: column;
+  grid-column: 2;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  height: 90%;
+  scrollbar-gutter: auto;
+  margin-right: 8px;
+}
+/* .
   .medialist--clear--button{
     height: 20px;
     width: 80px; 

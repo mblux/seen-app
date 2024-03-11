@@ -1,5 +1,5 @@
 .results-list {
-  width: 55%;
+  width: 100%;
   min-width: 300px;
   background-color: #a9a9a9;
   display: flex;
@@ -34,6 +34,7 @@
 
 .movie-thumb-and-link:hover {
   background-color: rgb(210, 244, 255);
+  cursor: pointer;
 }
 
 .movie-thumb-and-link {

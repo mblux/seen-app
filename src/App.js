@@ -50,13 +50,22 @@ function App() {
   const listElements = watchedList.map((movie) => {
     return (
       <li key={movie.id} className="list-item">
-        {movie.title}
+        <a
+          className="watched-title-link"
+          href={`https://www.imdb.com/title/${movie.imdbID}`}
+        >
+          {movie.title}
+        </a>
         <br />
-        Rating:{" "}
+        Year: {movie.year}
+        <br />
+        {`Rating:  `}
         <Stars
           updateRating={updateRating}
           id={movie.id}
           initialValue={movie.rating}
+          imdbID={movie.imdbID}
+          year={movie.year}
           onChange={(newRating) => handleRatingChange(movie.id, newRating)}
           getMovieRating={getMovieRating(movie.id)}
         />
@@ -64,10 +73,12 @@ function App() {
     )
   })
 
-  async function addNewMovie(movie) {
+  async function addNewMovie(movie, imdbID, year) {
     const newMovie = {
       title: movie,
       rating: 0,
+      imdbID: imdbID,
+      year: year,
     }
     const newMovieRef = await addDoc(moviesCollection, newMovie)
     setCurrentMovieId(newMovieRef.id)

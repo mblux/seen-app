@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { moviesCollection, db } from "../firebase.js"
 import { updateDoc, docRef, doc, getDoc } from "firebase/firestore"
+import { FaStar } from "react-icons/fa"
 
 export const Stars = (props, { initialValue }) => {
   const [rating, setRating] = useState(initialValue)
@@ -27,8 +28,8 @@ export const Stars = (props, { initialValue }) => {
   }
 
   return (
-    <div>
-      {[...Array(5)].map((_, index) => (
+    <span>
+      {[...Array(10)].map((_, index) => (
         <span
           key={index}
           onClick={() => handleRatingChange(index + 1)}
@@ -37,9 +38,10 @@ export const Stars = (props, { initialValue }) => {
             color: index < rating ? "rgb(210, 244, 255)" : "gray",
           }}
         >
-          ★
+          <FaStar size={18} />
         </span>
       ))}
-    </div>
+      <hr className="hr1" />
+    </span>
   )
 }

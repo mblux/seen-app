@@ -13,8 +13,26 @@
   align-items: center;
   min-width: 200px;
   grid-column: 3;
-  grid-row: 2;
+  grid-row: 1;
   z-index: 0;
+}
+
+.watched-title-link:link {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.watched-title-link:visited {
+  text-decoration: none;
+}
+
+.watched-title-link:hover {
+  text-decoration: underline;
+}
+
+.watched-title-link:active {
+  text-decoration: underline;
 }
 
 .main--wrapper {
@@ -25,14 +43,18 @@
   grid-template-rows: 15% 70% 15%;
   height: 100vh;
   min-width: 900px;
-  background-color: darkgrey;
+  background-color: #9b9a98;
   box-sizing: border-box;
 }
 
 input[type="radio"] {
   display: none;
 }
-
+.hr1 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  width: 252px;
+}
 .star {
   cursor: pointer;
 }

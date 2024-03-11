@@ -27,7 +27,7 @@ export default function SearchBar({ setSearchResults }) {
               movie.Poster
             )
           })
-          setSearchResults(results)
+          results && setSearchResults(results)
         }
       })
 
