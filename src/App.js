@@ -34,10 +34,10 @@ function App() {
     return unsubscribe
   }, [])
 
-  function handleChange(event) {
-    const { value } = event.target
-    setMovie(value)
-  }
+  // function handleChange(event) {
+  //   const { value } = event.target
+  //   setMovie(value)
+  // }
 
   const handleRatingChange = (id, newRating) => {
     setWatchedList(
@@ -96,7 +96,7 @@ function App() {
     const docSnap = await getDoc(docRef)
     if (docSnap.exists()) {
       const currentRating = docSnap.data().rating
-      console.log("Document data:", docSnap.data().rating)
+      console.log("Document data:", currentRating)
     } else {
       console.log("No such document!")
     }

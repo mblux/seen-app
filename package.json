@@ -1,5 +1,6 @@
 {
   "name": "seen-app",
+  "homepage": "https://matthewblu421.github.io/seen-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
