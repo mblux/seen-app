@@ -19,7 +19,7 @@ const SearchResultsList = ({ searchResults, addNewMovie }, props) => {
                 <img
                   className="movie-thumbnail"
                   src={result.Poster}
-                  // resizeMode="contain"
+                  resizeMode="contain"
                   alt="new"
                 />
                 <span className="movie-link-text">

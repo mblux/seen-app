@@ -37,6 +37,9 @@ export default function SearchBar({ setSearchResults }) {
   const handleChange = (value) => {
     setInput(value)
     fetchData(value)
+    if (value.length < 2) {
+      setSearchResults([])
+    }
   }
   return (
     <div className="search-input-wrapper">
