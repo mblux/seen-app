@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/seen-app/static/css/main.97dd751a.css",
+    "main.js": "/seen-app/static/js/main.eaefb58d.js",
+    "index.html": "/seen-app/index.html",
+    "main.97dd751a.css.map": "/seen-app/static/css/main.97dd751a.css.map",
+    "main.eaefb58d.js.map": "/seen-app/static/js/main.eaefb58d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.97dd751a.css",
+    "static/js/main.eaefb58d.js"
+  ]
+}
