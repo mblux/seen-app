@@ -1,10 +1,13 @@
 import "./App.css"
 import Navbar from "./components/Navbar"
 import MediaList from "./components/MediaList"
+import Signup from "./components/Signup.js"
 import React from "react"
 import SearchBar from "./components/SearchBar"
 import { useEffect, useState } from "react"
 import SearchResultsList from "./components/SearchResultsList"
+import { Container } from "react-bootstrap"
+import { AuthProvider } from "./components/contexts/AuthContext"
 import {
   onSnapshot,
   addDoc,
@@ -103,20 +106,31 @@ function App() {
   }
 
   return (
-    <main className="main--wrapper">
-      <div className="search-bar-container">
-        <SearchBar setSearchResults={setSearchResults} />
-        <SearchResultsList
-          searchResults={searchResults}
-          addNewMovie={addNewMovie}
+    <>
+      <AuthProvider>
+        <Container
+          className="d-flex align-items-center justify-content-center"
+          style={{ minHeight: "100vh" }}
+        >
+          <div className="w-100" style={{ maxWidth: "400px" }}>
+            <Signup />
+          </div>
+        </Container>
+      </AuthProvider>
+      <main className="main--wrapper">
+        <div className="search-bar-container">
+          <SearchBar setSearchResults={setSearchResults} />
+          <SearchResultsList
+            searchResults={searchResults}
+            addNewMovie={addNewMovie}
+          />
+        </div>
+        <Navbar />
+        <MediaList
+          // resetWatchedList={resetWatchedList}
+          listElements={listElements}
         />
-      </div>
-      <Navbar />
-      <MediaList
-        // resetWatchedList={resetWatchedList}
-        listElements={listElements}
-      />
-      {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
+        {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
       #TODO: USE THIS FORM TO ADD A CUSTOM MOVIE THAT COULDN'T BE SEARCHED 
       TO WATCHED LIST 
       
@@ -137,7 +151,8 @@ function App() {
           <button className="submit--btn">Add Movie</button>
         </form>
       </div> */}
-    </main>
+      </main>
+    </>
   )
 }
 

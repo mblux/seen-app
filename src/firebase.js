@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
 import { getFirestore, collection } from "firebase/firestore"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import firebase from "../src/firebase"
 
 // # Don't need analytics right now
 //import { getAnalytics } from "firebase/analytics";
@@ -12,21 +14,21 @@ import { getFirestore, collection } from "firebase/firestore"
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDTrW-aL0UnC1Vru2zfux9-RiOwdAYOG18",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 
-  authDomain: "seenapp-8cd15.firebaseapp.com",
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
 
-  databaseURL: "https://seenapp-8cd15-default-rtdb.firebaseio.com",
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
 
-  projectId: "seenapp-8cd15",
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
 
-  storageBucket: "seenapp-8cd15.appspot.com",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
 
-  messagingSenderId: "364925691012",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 
-  appId: "1:364925691012:web:73f484d1f1cb6eb4154ed1",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 
-  measurementId: "G-9NRP14WJX8",
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 }
 
 // Initialize Firebase
@@ -35,3 +37,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 export const moviesCollection = collection(db, "movies")
+export const auth = getAuth(app)
