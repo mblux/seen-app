@@ -6,7 +6,7 @@ function Signup() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { signUp, currentUser } = useAuth()
+  const { signUp } = useAuth()
   const [error, setError] = React.useState("")
   const [loading, setLoading] = useState(false)
 
@@ -31,7 +31,6 @@ function Signup() {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
-          {JSON.stringify(currentUser)}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

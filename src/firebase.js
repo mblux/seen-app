@@ -2,7 +2,6 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore, collection } from "firebase/firestore"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import firebase from "../src/firebase"
 
 // # Don't need analytics right now
 //import { getAnalytics } from "firebase/analytics";
