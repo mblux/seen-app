@@ -1,13 +1,10 @@
 import "./App.css"
-import Navbar from "./components/Navbar"
-import MediaList from "./components/MediaList"
 import Signup from "./components/Signup.js"
 import React from "react"
-import SearchBar from "./components/SearchBar"
 import { useEffect, useState } from "react"
-import SearchResultsList from "./components/SearchResultsList"
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "./components/contexts/AuthContext"
+import Login from "./components/Login.js"
 
 import SearchPage from "./components/SearchPage.js"
 import {
@@ -128,8 +125,8 @@ function App() {
               <Routes>
                 <Route exact path="/" element={<Dashboard />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
                 <Route
-                  id="SelectNoStyle"
                   path="/search"
                   element={
                     <SearchPage
