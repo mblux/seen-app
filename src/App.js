@@ -1,10 +1,13 @@
 import "./App.css"
 import Signup from "./components/Signup.js"
+import UpdateProfile from "./components/UpdateProfile.js"
+import ForgotPassword from "./components/ForgotPassword.js"
 import React from "react"
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "./components/contexts/AuthContext"
 import Login from "./components/Login.js"
+import PrivateRoute from "./components/PrivateRoute.js"
 
 import SearchPage from "./components/SearchPage.js"
 import {
@@ -22,6 +25,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Routes,
+  Navigate,
   Route,
   Link,
 } from "react-router-dom"
@@ -123,7 +127,24 @@ function App() {
           <Router>
             <AuthProvider>
               <Routes>
-                <Route exact path="/" element={<Dashboard />} />
+                <Route path="/seen-app" element={<Navigate to="/" />} />
+                <Route
+                  path="/"
+                  element={
+                    <PrivateRoute>
+                      <Dashboard />
+                    </PrivateRoute>
+                  }
+                ></Route>
+                <Route
+                  path="/update-profile"
+                  element={
+                    <PrivateRoute>
+                      <UpdateProfile />
+                    </PrivateRoute>
+                  }
+                ></Route>
+
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
                 <Route
@@ -137,6 +158,7 @@ function App() {
                     />
                   }
                 />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
               </Routes>
             </AuthProvider>
           </Router>
