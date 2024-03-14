@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
@@ -12,40 +12,50 @@
   flex-direction: column;
   align-items: center;
   min-width: 200px;
-  grid-column: 3;
-  grid-row: 2;
+
   z-index: 0;
 }
 
+.watched-title-link:link {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.watched-title-link:visited {
+  text-decoration: none;
+}
+
+.watched-title-link:hover {
+  text-decoration: underline;
+}
+
+.watched-title-link:active {
+  text-decoration: underline;
+}
+
 .main--wrapper {
-  display: grid;
-  justify-content: center;
-  padding: 20px;
-  grid-template-columns: 20% 10% 40% 10% 20%;
-  grid-template-rows: 15% 70% 15%;
-  height: 100vh;
-  min-width: 900px;
-  background-color: darkgrey;
-  box-sizing: border-box;
+  background-color: dimgray;
 }
 
 input[type="radio"] {
   display: none;
 }
-
+.hr1 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  width: 252px;
+}
 .star {
   cursor: pointer;
 }
 
-/* .title--form--input{
+.title--form--input {
   text-align: center;
   margin-bottom: 5px;
 }
 
-
-
-
-.input--form--container{
+.input--form--container {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -53,8 +63,6 @@ input[type="radio"] {
   justify-self: center;
   margin-top: 50px;
   background-color: white;
-  grid-column: 1;
-  grid-row: 1;
   width: 200px;
   height: 60px;
   overflow: hidden;

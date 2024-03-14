@@ -1,5 +1,5 @@
 .results-list {
-  width: 55%;
+  width: 100%;
   min-width: 300px;
   background-color: #a9a9a9;
   display: flex;
@@ -11,21 +11,25 @@
   overflow-y: scroll;
 }
 
-a:link {
+.imdb-link-small-text:link {
   text-decoration: none;
   color: black;
 }
 
-a:visited {
+.imdb-link-small-text:visited {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: none;
-}
-
-a:active {
+.imdb-link-small-text:hover {
   text-decoration: underline;
+}
+
+.imdb-link-small-text:active {
+  text-decoration: underline;
+}
+
+.imdb-link-small-text {
+  font-size: 0.75rem;
 }
 
 .movie-thumb-and-link:hover {

@@ -1,11 +1,14 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {getFirestore, collection} from "firebase/firestore";
-
+import { initializeApp } from "firebase/app"
+import { getFirestore, collection } from "firebase/firestore"
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth"
 
 // # Don't need analytics right now
 //import { getAnalytics } from "firebase/analytics";
-
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,29 +17,27 @@ import {getFirestore, collection} from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 
-  apiKey: "AIzaSyDTrW-aL0UnC1Vru2zfux9-RiOwdAYOG18",
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
 
-  authDomain: "seenapp-8cd15.firebaseapp.com",
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
 
-  databaseURL: "https://seenapp-8cd15-default-rtdb.firebaseio.com",
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
 
-  projectId: "seenapp-8cd15",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
 
-  storageBucket: "seenapp-8cd15.appspot.com",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 
-  messagingSenderId: "364925691012",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 
-  appId: "1:364925691012:web:73f484d1f1cb6eb4154ed1",
-
-  measurementId: "G-9NRP14WJX8"
-
-};
-
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+}
 
 // Initialize Firebase
 // const analytics = getAnalytics(app);
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-export const moviesCollection = collection(db, "SeenApp");
+const app = initializeApp(firebaseConfig)
+export const db = getFirestore(app)
+export const moviesCollection = collection(db, "movies")
+export const auth = getAuth(app)
