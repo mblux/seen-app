@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
-import Navbar from "./Navbar"
+import SeenNav from "./SeenNav.js"
 import MediaList from "./MediaList"
 import "./SearchPage.css"
-import { Container, Card } from "react-bootstrap"
+import { Navbar, Container, Card } from "react-bootstrap"
 import { onSnapshot, addDoc, updateDoc, doc, getDoc } from "firebase/firestore"
 import { moviesCollection, db } from "../firebase.js"
 import { Stars } from "./Stars.js"
@@ -96,12 +96,18 @@ const SearchPage = (props) => {
   }
   return (
     <Container
-      className="d-flex align-items-center justify-content-center"
+      className="d-flex align-items-center justify-content-center justify-items--center"
       style={{ minHeight: "100vh" }}
     >
-      <Card>
+      <Card
+        className="d-flex align-items-center justify-content-center justify-items--center"
+        style={{ minWidth: "1000px" }}
+      >
         <Card.Body>
+          <SeenNav />
+
           <main className="main--wrapper">
+            <MediaList listElements={listElements} />
             <div className="search-bar-container">
               <SearchBar setSearchResults={setSearchResults} />
               <SearchResultsList
@@ -109,8 +115,7 @@ const SearchPage = (props) => {
                 addNewMovie={addNewMovie}
               />
             </div>
-            <Navbar />
-            <MediaList listElements={listElements} />
+
             {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
       #TODO: USE THIS FORM TO ADD A CUSTOM MOVIE THAT COULDN'T BE SEARCHED 
       TO WATCHED LIST 
