@@ -95,28 +95,28 @@ const SearchPage = (props) => {
     }
   }
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center justify-items--center"
-      style={{ minHeight: "100vh" }}
-    >
-      <Card
+    <>
+      <SeenNav />
+      <Container
         className="d-flex align-items-center justify-content-center justify-items--center"
-        style={{ minWidth: "1000px" }}
+        style={{ minHeight: "100vh" }}
       >
-        <Card.Body>
-          <SeenNav />
+        <Card
+          className="d-flex align-items-center justify-content-center justify-items--center"
+          style={{ minWidth: "1000px" }}
+        >
+          <Card.Body>
+            <main className="main--wrapper">
+              <MediaList listElements={listElements} />
+              <div className="search-bar-container">
+                <SearchBar setSearchResults={setSearchResults} />
+                <SearchResultsList
+                  searchResults={searchResults}
+                  addNewMovie={addNewMovie}
+                />
+              </div>
 
-          <main className="main--wrapper">
-            <MediaList listElements={listElements} />
-            <div className="search-bar-container">
-              <SearchBar setSearchResults={setSearchResults} />
-              <SearchResultsList
-                searchResults={searchResults}
-                addNewMovie={addNewMovie}
-              />
-            </div>
-
-            {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
+              {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
       #TODO: USE THIS FORM TO ADD A CUSTOM MOVIE THAT COULDN'T BE SEARCHED 
       TO WATCHED LIST 
       
@@ -137,10 +137,11 @@ const SearchPage = (props) => {
           <button className="submit--btn">Add Movie</button>
         </form>
       </div> */}
-          </main>
-        </Card.Body>
-      </Card>
-    </Container>
+            </main>
+          </Card.Body>
+        </Card>
+      </Container>
+    </>
   )
 }
 
