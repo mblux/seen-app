@@ -1,5 +1,5 @@
 .medialist--list {
-  display: flex;
+  /* display: flex;
   padding-top: 30px;
   flex-direction: column;
   grid-column: 2;
@@ -9,7 +9,7 @@
   overflow-y: scroll;
   height: 90%;
   scrollbar-gutter: auto;
-  margin-right: 8px;
+  margin-right: 8px; */
 }
 /* .
   .medialist--clear--button{

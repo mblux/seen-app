@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
-import { Link, useNavigate, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 // import {
 //   getAuth,
 //   createUserWithEmailAndPassword,
