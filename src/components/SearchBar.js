@@ -47,7 +47,7 @@ export default function SearchBar({ setSearchResults }) {
       <FaSearch id="search-icon" />
       <input
         className="search-input-bar"
-        placeholder="Search for your favorite movie or show"
+        placeholder="Search Movies and Shows"
         value={input}
         onChange={(event) => handleChange(event.target.value)}
       ></input>

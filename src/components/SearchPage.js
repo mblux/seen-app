@@ -4,7 +4,7 @@ import SearchResultsList from "./SearchResultsList"
 import SeenNav from "./SeenNav.js"
 import MediaList from "./MediaList"
 import "./SearchPage.css"
-import { Navbar, Container, Card } from "react-bootstrap"
+import { Navbar, Container, Card, Row } from "react-bootstrap"
 import { onSnapshot, addDoc, updateDoc, doc, getDoc } from "firebase/firestore"
 import { moviesCollection, db } from "../firebase.js"
 import { Stars } from "./Stars.js"
@@ -106,7 +106,7 @@ const SearchPage = (props) => {
           style={{ minWidth: "1000px" }}
         >
           <Card.Body>
-            <main className="main--wrapper">
+            <main className="d-flex gap-5 ms-0 flex-direction-row justify-content-between justify-items--between">
               <MediaList listElements={listElements} />
               <div className="search-bar-container">
                 <SearchBar setSearchResults={setSearchResults} />
@@ -115,8 +115,18 @@ const SearchPage = (props) => {
                   addNewMovie={addNewMovie}
                 />
               </div>
+            </main>
+          </Card.Body>
+        </Card>
+      </Container>
+    </>
+  )
+}
 
-              {/* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
+export default SearchPage
+
+{
+  /* OLD METHOD OF ADDING MOVIE TO WATCHED LIST
       #TODO: USE THIS FORM TO ADD A CUSTOM MOVIE THAT COULDN'T BE SEARCHED 
       TO WATCHED LIST 
       
@@ -136,13 +146,5 @@ const SearchPage = (props) => {
           />
           <button className="submit--btn">Add Movie</button>
         </form>
-      </div> */}
-            </main>
-          </Card.Body>
-        </Card>
-      </Container>
-    </>
-  )
+      </div> */
 }
-
-export default SearchPage

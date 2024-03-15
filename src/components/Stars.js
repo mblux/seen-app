@@ -35,7 +35,7 @@ export const Stars = (props, { initialValue }) => {
           onClick={() => handleRatingChange(index + 1)}
           style={{
             cursor: "pointer",
-            color: index < rating ? "rgb(210, 244, 255)" : "gray",
+            color: index < rating ? "#e2c82f" : "gray",
           }}
         >
           <FaStar size={18} />
