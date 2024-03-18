@@ -33,7 +33,12 @@ function Login() {
     <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
+          {" "}
+          <h1 className="text-center mb-2">seen.</h1>
+          <p className="small-title-text text-center">
+            Log and rate your favorite movies and shows!
+          </p>
+          {/* <h2 className="text-center mb-4">Log In</h2> */}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
@@ -45,7 +50,7 @@ function Login() {
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
 
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100 mt-3" type="submit">
               Log In
             </Button>
           </Form>

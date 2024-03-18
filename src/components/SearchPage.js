@@ -101,7 +101,7 @@ const SearchPage = (props) => {
   }
   return (
     <>
-      <SeenNav />
+      {/* <SeenNav /> */}
       <Container
         className="d-flex align-items-center justify-content-center justify-items--center "
         style={{ minHeight: "100vh" }}
