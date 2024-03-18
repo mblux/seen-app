@@ -5,7 +5,14 @@ import SeenNav from "./SeenNav.js"
 import MediaList from "./MediaList"
 import "./SearchPage.css"
 import { Navbar, Container, Card, Row } from "react-bootstrap"
-import { onSnapshot, addDoc, updateDoc, doc, getDoc } from "firebase/firestore"
+import {
+  onSnapshot,
+  addDoc,
+  updateDoc,
+  doc,
+  getDoc,
+  deleteDoc,
+} from "firebase/firestore"
 import { moviesCollection, db } from "../firebase.js"
 import { Stars } from "./Stars.js"
 import { useAuth } from "./contexts/AuthContext.js"
@@ -27,7 +34,8 @@ const SearchPage = (props) => {
         ...doc.data(),
         id: doc.id,
       }))
-      setWatchedList(moviesArray)
+      const sortedList = moviesArray.sort((a, b) => b.updatedAt - a.updatedAt)
+      setWatchedList(sortedList)
     })
     return unsubscribe
   }, [])
@@ -47,27 +55,30 @@ const SearchPage = (props) => {
 
   const listElements = watchedList.map((movie) => {
     return (
-      <li key={movie.id} className="list-item">
-        <a
-          className="watched-title-link"
-          href={`https://www.imdb.com/title/${movie.imdbID}`}
-        >
-          {movie.title}
-        </a>
-        <br />
-        Year: {movie.year}
-        <br />
-        {`Rating:  `}
-        <Stars
-          updateRating={updateRating}
-          id={movie.id}
-          initialValue={movie.rating}
-          imdbID={movie.imdbID}
-          year={movie.year}
-          onChange={(newRating) => handleRatingChange(movie.id, newRating)}
-          getMovieRating={getMovieRating(movie.id)}
-        />
-      </li>
+      <div>
+        <li key={movie.id} className="list-item">
+          <a
+            className="watched-title-link"
+            href={`https://www.imdb.com/title/${movie.imdbID}`}
+          >
+            {movie.title}
+          </a>
+          <br />
+          Year: {movie.year}
+          <br />
+          {`Rating:  `}
+          <Stars
+            updateRating={updateRating}
+            id={movie.id}
+            initialValue={movie.rating}
+            imdbID={movie.imdbID}
+            year={movie.year}
+            onChange={(newRating) => handleRatingChange(movie.id, newRating)}
+            getMovieRating={getMovieRating(movie.id)}
+            deleteMovie={deleteMovie}
+          />
+        </li>
+      </div>
     )
   })
 
@@ -77,10 +88,17 @@ const SearchPage = (props) => {
       rating: 0,
       imdbID: imdbID,
       year: year,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     }
     const newMovieRef = await addDoc(currentUserCollection, newMovie)
     setCurrentMovieId(newMovieRef.id)
     setMovie("")
+  }
+
+  async function deleteMovie(currentMovieId) {
+    const docRef = doc(db, currentUser.uid, currentMovieId)
+    await deleteDoc(docRef)
   }
 
   function updateRating(currentMovieId, newRating) {

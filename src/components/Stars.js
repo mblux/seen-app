@@ -3,6 +3,8 @@ import { moviesCollection, db } from "../firebase.js"
 import { updateDoc, docRef, doc, getDoc } from "firebase/firestore"
 import { FaStar } from "react-icons/fa"
 import { useAuth } from "./contexts/AuthContext.js"
+import { TiDeleteOutline } from "react-icons/ti"
+import "../App.css"
 
 export const Stars = (props, { initialValue }) => {
   const [rating, setRating] = useState(initialValue)
@@ -43,6 +45,14 @@ export const Stars = (props, { initialValue }) => {
           <FaStar size={18} />
         </span>
       ))}
+
+      <button
+        className="delete-movie-btn"
+        onClick={() => props.deleteMovie(props.id)}
+      >
+        <TiDeleteOutline size={24} />
+      </button>
+
       <hr className="hr1" />
     </span>
   )
