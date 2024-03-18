@@ -1,3 +1,29 @@
+.seen-logo-span {
+  background-color: rgb(126, 125, 125);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  align-self: center;
+  justify-items: center;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: rgb(241, 241, 241);
+}
+button {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: var(--bs-nav-link-color);
+  text-decoration: none;
+  background: 0 0;
+  border: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
 /* .main--nav {
   background-color: rgb(101, 100, 100);
   grid-column-start: 1;

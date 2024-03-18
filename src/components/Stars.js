@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react"
 import { moviesCollection, db } from "../firebase.js"
 import { updateDoc, docRef, doc, getDoc } from "firebase/firestore"
 import { FaStar } from "react-icons/fa"
+import { useAuth } from "./contexts/AuthContext.js"
 
 export const Stars = (props, { initialValue }) => {
   const [rating, setRating] = useState(initialValue)
+  const { currentUser } = useAuth()
 
   useEffect(() => {
     // Fetch the rating from Firestore document
     const fetchRating = async () => {
       try {
-        const docSnap = await getDoc(doc(db, "movies", props.id))
+        const docSnap = await getDoc(doc(db, currentUser.uid, props.id))
         if (docSnap.exists()) {
           const { rating } = docSnap.data()
           setRating(rating)

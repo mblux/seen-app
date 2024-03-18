@@ -8,15 +8,20 @@ import { Navbar, Container, Card, Row } from "react-bootstrap"
 import { onSnapshot, addDoc, updateDoc, doc, getDoc } from "firebase/firestore"
 import { moviesCollection, db } from "../firebase.js"
 import { Stars } from "./Stars.js"
+import { useAuth } from "./contexts/AuthContext.js"
+import { collection } from "firebase/firestore"
 
 const SearchPage = (props) => {
   const [movie, setMovie] = useState("")
   const [watchedList, setWatchedList] = useState([])
   const [currentMovieId, setCurrentMovieId] = useState("")
   const [searchResults, setSearchResults] = useState([])
+  const { currentUser } = useAuth()
+
+  const currentUserCollection = collection(db, currentUser.uid)
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(moviesCollection, function (snapshot) {
+    const unsubscribe = onSnapshot(currentUserCollection, function (snapshot) {
       //sync local movie list with snapshot data
       const moviesArray = snapshot.docs.map((doc) => ({
         ...doc.data(),
@@ -73,19 +78,19 @@ const SearchPage = (props) => {
       imdbID: imdbID,
       year: year,
     }
-    const newMovieRef = await addDoc(moviesCollection, newMovie)
+    const newMovieRef = await addDoc(currentUserCollection, newMovie)
     setCurrentMovieId(newMovieRef.id)
     setMovie("")
   }
 
   function updateRating(currentMovieId, newRating) {
-    const docRef = doc(db, "movies", currentMovieId)
+    const docRef = doc(db, currentUser.uid, currentMovieId)
     updateDoc(docRef, { rating: newRating })
   }
 
   //GET rating from each movie in watchedList array from firebase
   async function getMovieRating(currentMovieId) {
-    const docRef = doc(db, "movies", currentMovieId)
+    const docRef = doc(db, currentUser.uid, currentMovieId)
     const docSnap = await getDoc(docRef)
     if (docSnap.exists()) {
       const currentRating = docSnap.data().rating
@@ -98,12 +103,12 @@ const SearchPage = (props) => {
     <>
       <SeenNav />
       <Container
-        className="d-flex align-items-center justify-content-center justify-items--center"
+        className="d-flex align-items-center justify-content-center justify-items--center "
         style={{ minHeight: "100vh" }}
       >
         <Card
-          className="d-flex align-items-center justify-content-center justify-items--center"
-          style={{ minWidth: "1000px" }}
+          className="d-flex align-items-center justify-content-center justify-items--center "
+          style={{ minWidth: "1000px", height: "98vh", minHeight: "80vh" }}
         >
           <Card.Body>
             <main className="d-flex gap-5 ms-0 flex-direction-row justify-content-between justify-items--between">

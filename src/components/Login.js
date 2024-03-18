@@ -23,7 +23,7 @@ function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      navigate("/")
+      navigate("/search")
     } catch {
       setError("Login Failed")
     }
